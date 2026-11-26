@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b32"><link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css"><title>RDO | Diário de Obra</title>
+</head>
+<body>
+<header><div><small>DIÁRIO DE OBRA</small><h1>RDO</h1><p>Registro diário de atividades</p></div><button id="newBtn">＋ Novo RDO</button></header>
+<main>
+<section class="panel">
+<h2>Identificação</h2>
+<div class="grid">
+<label>Obra<input id="obra" placeholder="Nome da obra"></label>
+<label>Data<input id="data" type="date"></label>
+<label>Responsável<input id="responsavel" placeholder="Seu nome"></label>
+<label>Pavimento / Local<input id="local" placeholder="Ex.: 2º Pavimento"></label>
+<label>Turno<select id="turno"><option>Integral</option><option>Manhã</option><option>Tarde</option><option>Noite</option></select></label>
+<label>Nº do relatório<input id="numero" placeholder="Automático"></label>
+</div>
+</section>
+<section class="panel">
+<div class="section-head"><h2>Disciplinas e atividades</h2><button class="secondary" id="addDisc">＋ Disciplina</button></div>
+<div id="disciplines"></div>
+</section>
+<section class="panel">
+<h2>Ocorrências e observações</h2><textarea id="observacoes" rows="4" placeholder="Registre ocorrências, impedimentos, orientações..."></textarea>
+</section>
+<section class="panel">
+<h2>Resumo do dia</h2><div class="stats" id="stats"></div>
+</section>
+<div class="actions"><button id="saveBtn">Salvar RDO neste aparelho</button><button class="secondary" id="pdfBtn">Gerar PDF / Imprimir</button></div>
+<section class="panel"><h2>Histórico salvo neste aparelho</h2><div id="history"></div></section>
+<p class="note">Versão inicial: os registros ficam salvos neste aparelho. Faça backup/exportação regularmente. A sincronização em nuvem será configurada na próxima etapa.</p>
+</main>
+<template id="disciplineTpl"><article class="discipline"><div class="section-head"><input class="disc-name" placeholder="Nome da disciplina"><button class="danger remove-disc">Remover</button></div><div class="activities"></div><button class="secondary add-activity">＋ Atividade</button></article></template>
+<template id="activityTpl"><div class="activity"><input class="act-name" placeholder="Descreva a atividade"><select class="status"><option>Em andamento</option><option>Executada</option><option>Pendente</option><option>Bloqueada</option></select><select class="priority"><option>Baixa</option><option selected>Média</option><option>Alta</option><option>Urgente</option></select><label class="photo-label">＋ Foto<input class="photo" type="file" accept="image/*" capture="environment"></label><input class="caption" placeholder="Legenda da foto / observação"><button class="danger remove-act">×</button><div class="preview"></div></div></template>
+<script src="app.js"></script>
+</body></html>
